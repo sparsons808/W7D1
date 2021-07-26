@@ -15,7 +15,9 @@ class CatsController < ApplicationController
   end
 
   def create
+    debugger
     @cat = Cat.new(cat_params)
+    @cat.user_id = current_user.id
     if @cat.save
       redirect_to cat_url(@cat)
     else
